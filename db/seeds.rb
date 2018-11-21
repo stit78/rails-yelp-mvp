@@ -5,3 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts "deleting instance"
+Restaurant.destroy_all
+
+
+puts "creating instance"
+5.times do
+  name = Faker::Company.name
+  address = Faker::Address.street_address
+  phone_number = Faker::PhoneNumber.phone_number
+  category = ["chinese", "italian", "japanese", "french", "belgian"].sample
+  restaurant = Restaurant.new(name: name, address: address, phone_number: phone_number, category: category)
+  restaurant.save
+end
+
+puts "instances created"
